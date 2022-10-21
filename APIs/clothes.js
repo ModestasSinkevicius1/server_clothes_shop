@@ -12,10 +12,10 @@ const clothesAPI = (app, con) =>{
 
   app.post('/clothes', (req, res) => {
     const sql = `
-    INSERT INTO clothes (type, color, price)
-    VALUES (?, ?, ?)
+    INSERT INTO clothes (type, color, price, image)
+    VALUES (?, ?, ?, ?)
     `;
-    con.query(sql, [req.body.type, req.body.color, req.body.price], (err, result) => {
+    con.query(sql, [req.body.type, req.body.color, req.body.price, req.body.image], (err, result) => {
         if (err) throw err;
         res.send(result);
     });
