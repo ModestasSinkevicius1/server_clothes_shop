@@ -1,5 +1,16 @@
 const clothesAPI = (app, con) =>{
 
+  app.get('/clothes/count', (req, res) => {
+    const sql = `
+    SELECT COUNT(*)
+    FROM clothes`;
+    con.query(sql, (err, result) => {
+      if(err) throw err;
+      res.send(result);
+    });
+  })
+
+
   app.get('/clothes', (req, res) => {
       const sql = `
       SELECT * FROM clothes
